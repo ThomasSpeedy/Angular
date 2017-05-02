@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Internationalisierung AOT</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <app-root>Die Applikation wird geladen...</app-root>
+  </body>
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+
+  <script>
+    var browserLanguage = (navigator.languages && navigator.languages[0]) ||
+        navigator.browserLanguage ||
+        navigator.userLanguage ||
+        navigator.systemLanguage;
+
+    var supportedLanguages = ['de', 'fr'];
+
+    var locale = 'de';
+    if (supportedLanguages.includes(browserLanguage)) {
+      locale = browserLanguage
+    }
+    document.write('<script src="build/bundle-' + locale + '.js">' +
+                   '<\/script>');
+
+  </script>
+</html>

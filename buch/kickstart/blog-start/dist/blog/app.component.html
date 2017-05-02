@@ -1,0 +1,23 @@
+<h1>Mein Angular-Blog</h1>
+<h3>Neuen Blog-Eintrag erstellen</h3>
+
+<app-blog-entry *ngFor="let entry of entries" [entry]="entry">
+</app-blog-entry>   
+
+<div class= "form">
+    <div class="control">
+        <label for="title">Titel:</label>
+        <input type="text" id="title" #title/>
+    </div>
+    <div class="control">
+        <label for="image">Bild-URL:</label>
+        <input type="text" id="image" #image/>
+    </div>
+    <div class="control">
+        <label for="text">Text:</label>
+        <textarea id="text" cols="20" rows="3" #text></textarea>
+    </div>
+    <div>
+        <button (click)="createBlogEntry(title.value, image.value, text.value)">Blog-Eintrag anlegen</button>
+    </div>
+</div>

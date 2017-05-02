@@ -1,0 +1,39 @@
+
+<div class="circle-container" #container></div>
+
+<hr>
+
+<!--
+<template #timePickerTemplate>
+  <ch-time-picker></ch-time-picker>
+</template>
+-->
+<div>
+  <h4>Repeater-Direktive</h4>
+  <input type="number" [(ngModel)]="repeatCnt"> <br><br>
+  <div *chRepeater="repeatCnt">
+    <i>Ich werde wiederholt!</i>
+  </div>
+
+  <!-- Langschreibweise
+  <template [chRepeater]="repeatCnt">
+    <div>
+      <i>Ich werde wiederholt!</i>
+    </div>
+  </template>
+
+  -->
+</div>
+<hr>
+<div>
+  <h4>Todo-Liste</h4>
+
+  <div #todoContainer></div>
+
+  <template #todoTemplate let-todo="todoParam">
+     <div [ngStyle]="{'text-decoration': todo.done ? 'line-through' : ''}">
+       <b>{{todo.text}}</b>
+     </div>
+  </template>
+</div>
+<br/><br/>

@@ -1,0 +1,24 @@
+body {
+    padding-top: 60px;
+    padding: 20px;
+}
+
+.content {
+    _width: 100%;
+    height: 100%;
+    _display: flex;
+    _flex-direction: row;
+    _font-family: 'Helvetica Neue', sans-serif;
+}
+
+ng-component,
+auto-calculation
+{
+    position:fixed;
+    padding: 20px;
+    top:60px;
+    left:0;
+    right:0;
+    height:100%;
+    display:block;
+}
