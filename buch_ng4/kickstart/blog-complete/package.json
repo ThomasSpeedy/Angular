@@ -1,0 +1,48 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "Blog Applikation",
+  "watch": {
+    "copy:html": "./app/**/*.html"
+  },
+  "scripts": {
+    "start": "tsc && npm run copy:html && concurrently \"npm run tsc:w\" \"npm run html:watch\" \"live-server\" ",
+    "tsc": "./node_modules/.bin/tsc",
+    "tsc:w": "./node_modules/.bin/tsc --watch",
+    "copy:html": "copyfiles -u 1 ./app/**/*.html dist",
+    "html:watch": "onchange \"./app/**/*.html\" -v -- npm run copy:html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": ">=4.0.0-beta <5.0.0",
+    "@angular/compiler": ">=4.0.0-beta <5.0.0",
+    "@angular/core": ">=4.0.0-beta <5.0.0",
+    "@angular/forms": ">=4.0.0-beta <5.0.0",
+    "@angular/http": ">=4.0.0-beta <5.0.0",
+    "@angular/platform-browser": ">=4.0.0-beta <5.0.0",
+    "@angular/platform-browser-dynamic": ">=4.0.0-beta <5.0.0",
+    "systemjs": "0.19.27",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.1.0",
+    "zone.js": "^0.8.4",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "canonical-path": "0.0.2",
+    "concurrently": "^2.2.0",
+    "copyfiles": "^1.0.0",
+    "http-server": "^0.9.0",
+    "live-server": "^1.1.0",
+    "lodash": "^4.11.1",
+    "npm-watch": "^0.1.6",
+    "onchange": "^3.0.2",
+    "rimraf": "^2.5.2",
+    "tslint": "^3.7.4",
+    "typescript": "^2.0.2",
+    "typings": "^1.0.4"
+  },
+  "repository": {}
+}

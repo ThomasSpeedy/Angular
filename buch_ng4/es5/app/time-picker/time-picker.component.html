@@ -1,0 +1,39 @@
+
+<div class="timepicker">
+    <div class="col">
+        <button (click)="incrementTime('hours', 23)"> + </button>
+        <input [value]="time?.hours"
+               (change)="changeTime('hours', $event.target.value, 23)"
+               (keydown.arrowup)="incrementTime('hours', 23); $event.preventDefault()"
+               (keydown.arrowdown)="decrementTime('hours', 23); $event.preventDefault()"
+               (keydown.tab)="minutes.focus(); $event.preventDefault()"
+        />
+        <button (click)="decrementTime('hours', 23)"> - </button>
+    </div>
+    <div class="col">
+        <button (click)="incrementTime('minutes', 59)"> + </button>
+        <input #minutes
+               [value]="time?.minutes"
+               (change)="changeTime('minutes', $event.target.value, 59)"
+               (keydown.arrowup)="incrementTime('minutes', 59); $event.preventDefault()"
+               (keydown.arrowdown)="decrementTime('minutes', 59); $event.preventDefault()"
+               (keydown.tab)="seconds.focus(); $event.preventDefault()"
+        />
+        <button (click)="decrementTime('minutes', 59)"> - </button>
+    </div>
+    <div class="col">
+        <button (click)="incrementTime('seconds', 59)"> + </button>
+        <input #seconds
+               [value]="time?.seconds"
+               (change)="changeTime('seconds', $event.target.value, 59)"
+               (keydown.arrowup)="incrementTime('seconds', 59); $event.preventDefault()"
+               (keydown.arrowdown)="decrementTime('seconds', 59); $event.preventDefault()"
+               (keydown.tab)="seconds.focus(); $event.preventDefault()"
+        />
+        <button (click)="decrementTime('seconds', 59)"> - </button>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,12 @@
+<div class="calendar">
+  <div class="row">
+    <ch-time-picker #timepicker [(time)]="calendarEntry.startTime"></ch-time-picker>
+  </div>
+  <div class="row">
+    <br>
+    <button (click)="timepicker.reset()">Zeit zurücksetzen</button>
+    <br>
+    <br>
+    <div>Die ausgewählte Zeit lautet: {{calendarEntry.startTime}}</div>
+  </div>
+</div>

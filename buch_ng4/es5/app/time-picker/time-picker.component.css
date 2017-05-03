@@ -1,0 +1,37 @@
+input {
+    font-size: 20px;
+    border-width: 0px;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.col {
+    width: 50px;
+    float: left;
+    margin: 0px 10px;
+    font-size: 20px;
+    color: #2d2e2e;
+    font-family: 'arial';
+    font-weight: 700;
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+    padding: 11px 22px 9px 22px;
+    border: 1px solid #ccc;
+    margin: auto;
+    background: Transparent;
+    border-radius: 5px;
+}
+
+.timepicker {
+    padding: 10px;
+    border-radius: 5px;
+    width: 207x;
+    border: 1px solid #ccc;
+    float: left;
+    top: 27px;
+    left: 0px;
+}
