@@ -69,9 +69,10 @@
     <div class="col-lg-12">
         <h2>Datepicker-Demo</h2>
         <!--<input type="text" id="datepicker" chJQueryDatePicker/>-->
-        <div chJQueryDatePicker [(date)]="datePickerValue"></div>
+        <div chJQueryDatePicker #aDatePicker [(date)]="datePickerValue"></div>
         <br/>
         <input class="form-control" [(ngModel)]="datePickerValue"/>
         <p>Der aktuelle Wert des DatePickers ist: {{datePickerValue}}</p>
+        <button class="btn" (click)="test('31.12.2017')">Test</button>      
     </div>
 </div>

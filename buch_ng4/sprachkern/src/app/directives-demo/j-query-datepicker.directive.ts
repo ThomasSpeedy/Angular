@@ -8,7 +8,7 @@ declare var jQuery: any;
 export class JQueryDatePickerDirective implements OnChanges {
   datePickerRef: any;
   @Input() date: string;
-  @Output() onSelectDate = new EventEmitter();
+  @Output() SelectDate = new EventEmitter();
 
   constructor(private elementRef: ElementRef) {
     this.datePickerRef = jQuery(this.elementRef.nativeElement).datepicker({
@@ -29,17 +29,23 @@ export class JQueryDatePickerDirective implements OnChanges {
       dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
       showMonthAfterYear: false,
       showOn: 'both',
-//      buttonImage: 'media/img/calendar.png',
-//      buttonImageOnly: true,
+      //      buttonImage: 'media/img/calendar.png',
+      //      buttonImageOnly: true,
       dateFormat: 'dd.mm.yy',
       onSelect: (dateText, datePickerInst) => {
         console.log(dateText);
-        //this.date = dateText;
-        this.onSelectDate.emit(dateText);
+        this.date = dateText;
+        this.SelectDate.emit(this.date);
       }
     });
   }
   ngOnChanges() {
     this.datePickerRef.datepicker('setDate', this.date);
+  }
+  test(dateString: string) {
+    this.SelectDate.emit(dateString);
+  }
+  getDate() {
+    return this.date;
   }
 }
