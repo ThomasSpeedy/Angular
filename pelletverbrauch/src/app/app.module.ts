@@ -27,4 +27,4 @@ import { ConsumptionFigureComponent } from './consumption-figure/consumption-fig
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

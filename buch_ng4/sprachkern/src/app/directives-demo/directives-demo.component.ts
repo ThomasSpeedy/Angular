@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
 export class DirectivesDemoComponent {
   borderWidth = 1;
   sliderValue: number = 50;
+  datePickerValue: string = '1.1.2017';
 
   constructor() {
   }

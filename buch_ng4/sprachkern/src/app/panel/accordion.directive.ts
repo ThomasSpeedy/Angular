@@ -1,7 +1,7 @@
 import {PanelComponent} from './panel.component';
 import {ContentChildren, QueryList, Input, Directive, AfterContentInit} from '@angular/core';
 @Directive({
-  selector: '[chAccoridon]',
+  selector: '[chAccordion]',
   exportAs: 'accordion'
 })
 export class AccordionDirective implements AfterContentInit {

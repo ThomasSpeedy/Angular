@@ -4,7 +4,7 @@ import { AfterViewInit, AfterViewChecked } from '@angular/core';
 import { AfterContentInit, AfterContentChecked } from '@angular/core';
 
 function logChangeDetection(entry) {
-  //console.debug(entry);
+//  console.debug(entry);
 }
 
 @Component({
@@ -13,7 +13,7 @@ function logChangeDetection(entry) {
   template: `<h3>View Child</h3>
              <span>Text: {{text}}</span>`,
 })
-export class ViewChildComponent implements OnChanges, OnInit, AfterViewChecked, AfterContentChecked {
+export class ViewChildComponent implements OnChanges, OnInit, AfterViewChecked, AfterContentChecked, DoCheck {
   @Input() public text;
   @Input() public greeting;
 

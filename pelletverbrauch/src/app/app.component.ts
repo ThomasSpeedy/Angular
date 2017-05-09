@@ -8,10 +8,10 @@ import 'moment/locale/de';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'hmi works!';
   constructor() {
+    console.log('AppComponent  im constructor');
     moment.locale(window.navigator.language);
-  }
-  createConsumptionFigure(Date: Date, OperationHours: Number, Starts: Number, Consumption: Number) {
-    console.log(Date, OperationHours, Starts, Consumption);
+    console.log('AppComponent  im constructor');
   }
 }

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ConsumptionFigure } from './consumption-figure';
-import { NgbDatepickerConfig, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDateDEParserFormatter } from './ngb-date-de-parser-formatter';
+//import { NgbDatepickerConfig, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbDateDEParserFormatter } from './ngb-date-de-parser-formatter';
 import * as moment from 'moment';
 
 @Component({
   selector: 'hmi-consumption-figure',
   templateUrl: './consumption-figure.component.html',
-  styleUrls: ['./consumption-figure.component.css'],
-  providers:  [{provide: NgbDateParserFormatter, useClass: NgbDateDEParserFormatter}]
+  styleUrls: ['./consumption-figure.component.css']/*,
+  providers:  [{provide: NgbDateParserFormatter, useClass: NgbDateDEParserFormatter}]*/
 })
 export class ConsumptionFigureComponent {
 
