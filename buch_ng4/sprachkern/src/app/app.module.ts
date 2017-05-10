@@ -30,7 +30,7 @@ import { DynamicComponentsDemoComponent, CircleComponent } from './dynamic-compo
 import { RepeaterDirective } from './repeater/repeater.directive';
 import {PanelModule} from './panel/panel.module';
 import {TabsModule} from './tabs/tabs.module';
-import {JQueryDatePickerDirective} from './directives-demo/j-query-datepicker.directive';
+import {DatePickerDirective} from './directives-demo/datepicker.directive';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, PanelModule,TabsModule],
@@ -43,7 +43,7 @@ import {JQueryDatePickerDirective} from './directives-demo/j-query-datepicker.di
     CalendarComponent,
     TabsDemoComponent,
     BasicOperationsComponent,
-    BorderDirective, LowerCaseDirective, DraggableDirective, SliderDirective, JQueryDatePickerDirective,
+    BorderDirective, LowerCaseDirective, DraggableDirective, SliderDirective, DatePickerDirective,
     ContactListOptimizedComponent,
     ContactEntryOptimizedComponent,
     ContactListComponent,

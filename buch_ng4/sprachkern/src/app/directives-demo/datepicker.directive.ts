@@ -1,14 +1,14 @@
-import { Input, ElementRef, Output, Directive, EventEmitter, OnChanges } from '@angular/core';
+import { Input, ElementRef, Output, Directive, EventEmitter, OnChanges, OnDestroy, HostListener } from '@angular/core';
 
 declare var jQuery: any;
 
 @Directive({
-  selector: '[chJQueryDatePicker]'
+  selector: '[hmiDatePicker]'
 })
-export class JQueryDatePickerDirective implements OnChanges {
+export class DatePickerDirective implements OnChanges, OnDestroy {
   datePickerRef: any;
   @Input() date: string;
-  @Output() SelectDate = new EventEmitter();
+  @Output() dateChange = new EventEmitter();
 
   constructor(private elementRef: ElementRef) {
     this.datePickerRef = jQuery(this.elementRef.nativeElement).datepicker({
@@ -33,19 +33,36 @@ export class JQueryDatePickerDirective implements OnChanges {
       //      buttonImageOnly: true,
       dateFormat: 'dd.mm.yy',
       onSelect: (dateText, datePickerInst) => {
-        console.log(dateText);
         this.date = dateText;
-        this.SelectDate.emit(this.date);
+        this.notifyChange(dateText);
       }
     });
   }
+  // Wenn der Benutzer direkt im Input-Feld editiert, wird onSelect nicht aufgerufen
+  // Deshalb muss auch onChange behandelt werden
+  @HostListener('change', ['$event']) onChange($event) {
+    const aDate = this.datePickerRef.datepicker('getDate');
+    this.setDate(aDate);
+  }
+  // Wird aufgerufen, wenn eine gebundene Variable geändert wird und der Datumswert
+  // sich auch ändern soll
   ngOnChanges() {
     this.datePickerRef.datepicker('setDate', this.date);
   }
-  test(dateString: string) {
-    this.SelectDate.emit(dateString);
+  ngOnDestroy() {
+    this.datePickerRef.datepicker('destroy');
   }
-  getDate() {
-    return this.date;
+  // Informiert die Listener über Änderungen
+  notifyChange(date: string) {
+    this.dateChange.emit(date);
+  }
+  setDate(aDate: Date | string): void;
+  setDate(aDate): void {
+    if (typeof aDate === 'string') {
+      this.date = aDate;
+    } else {
+      this.date = aDate != null ? aDate.toLocaleDateString() : '';
+    }
+    this.notifyChange(this.date);
   }
 }
