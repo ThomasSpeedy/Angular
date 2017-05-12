@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
+=======
+    // Verwendet IntelliSense zum Ermitteln möglicher Node.js-Debugattribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+>>>>>>> 73bee221e01aead318bd3206d1ef7c72d2af810c
     "version": "0.2.0",
     "configurations": [
         {
             "type": "chrome",
             "request": "launch",
+<<<<<<< HEAD
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceRoot}"
@@ -14,6 +21,20 @@
             "name": "Attach to Chrome",
             "port": 9222,
             "webRoot": "${workspaceRoot}"
+=======
+            "name": "Launch Chrome",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Programm starten",
+            "program": "${file}",
+            "outFiles": [
+                "${workspaceRoot}/out/**/*.js"
+            ]
+>>>>>>> 73bee221e01aead318bd3206d1ef7c72d2af810c
         }
     ]
 }
