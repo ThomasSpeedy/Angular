@@ -1,0 +1,8 @@
+.worktime-list-item {
+  padding: 8px;
+  width: 300px;
+  border-radius: 2px;
+  border: lightgrey solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}

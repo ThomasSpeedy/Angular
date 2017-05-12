@@ -6,6 +6,7 @@ import { DatepickerDirective } from './datepicker.directive';
   imports: [
     CommonModule
   ],
-  declarations: [DatepickerDirective]
+  declarations: [DatepickerDirective],
+  exports: [DatepickerDirective]
 })
 export class SharedModule { }

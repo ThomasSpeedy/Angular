@@ -19,9 +19,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "ze",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/jquery-ui-bundle/jquery-ui.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/jquery-ui-bundle/jquery-ui.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,0 +1,17 @@
+<h2>Meine Arbeitszeiten</h2>
+<ze-worktime-list [worktimes]="worktimes" (onSelect)="worktimeSelected($event)">
+</ze-worktime-list>
+<h3>Arbeitszeit bearbeiten</h3>
+<form>
+  <label>Datum</label>
+  <input type="text" name="beginDate2" zeDatepicker [(ngModel)]="worktimeBeginDate" />
+  <br/>
+  <label>Beginn</label>
+  <input type="text" name="beginTime" [(ngModel)]="worktimeBeginTime">
+  <br/>
+  <label>Ende</label>
+  <input type="text" name="endTime" [(ngModel)]="worktimeEndTime">
+  <br/>
+  <button (click)="updateWorktime()">Speichern</button>
+  <button (click)="createWorktime()">Neu anlegen</button>
+</form>
