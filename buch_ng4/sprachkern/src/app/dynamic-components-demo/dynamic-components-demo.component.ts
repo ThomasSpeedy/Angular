@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, Input, ViewChild} from '@angular/core';
+import {Component, AfterViewInit, AfterContentInit, OnDestroy, Input, ViewChild} from '@angular/core';
 import {ViewContainerRef, ComponentFactory, ComponentFactoryResolver} from '@angular/core';
 
 @Component({
@@ -15,7 +15,7 @@ import {ViewContainerRef, ComponentFactory, ComponentFactoryResolver} from '@ang
      }
   `]
 })
-export class CircleComponent {
+export class CircleComponent implements OnDestroy {
   @Input() color = 'black';
   ngOnDestroy() {
     console.log('Destroy circle');
@@ -28,7 +28,7 @@ export class CircleComponent {
   templateUrl: './dynamic-components-demo.component.html',
   styleUrls: ['./dynamic-components-demo.component.css']
 })
-export class DynamicComponentsDemoComponent {
+export class DynamicComponentsDemoComponent implements AfterContentInit {
   @ViewChild('container', {read: ViewContainerRef}) container;
 
   @ViewChild('todoContainer', {read: ViewContainerRef}) todoContainer;
@@ -53,7 +53,7 @@ export class DynamicComponentsDemoComponent {
     const circleRef = this.addCircle('gray');
     this.container.move(circleRef.hostView, 1);
 
-    this.container.remove(this.container.length - 1); //letzten Kreis löschen
+    this.container.remove(this.container.length - 1); // letzten Kreis löschen
 
     this.todoContainer.createEmbeddedView(this.todoTemplate, {
       todoParam: {

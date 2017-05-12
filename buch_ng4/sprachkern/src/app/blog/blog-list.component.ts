@@ -26,7 +26,7 @@ export class BlogEntryComponent {
 })
 export class BlogListComponent {
     @Input() entries: any[];
-    @ContentChild('entryTemplate') entryTemplate;
+    @ContentChild('entryTemplate') entryTemplate: TemplateRef<any>;
     @ContentChild('additionalMarkup') additionalMarkup;
     hasCustomTemplate: boolean;
     ngAfterContentInit() {
