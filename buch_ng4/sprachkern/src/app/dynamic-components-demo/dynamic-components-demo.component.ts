@@ -1,5 +1,5 @@
-import {Component, AfterViewInit, Input, ViewChild} from '@angular/core';
-import {ViewContainerRef, ComponentFactory, ComponentFactoryResolver} from '@angular/core';
+import { Component, AfterViewInit, Input, ViewChild } from '@angular/core';
+import { ViewContainerRef, ComponentFactory, ComponentFactoryResolver } from '@angular/core';
 
 @Component({
   selector: 'ch-circle',
@@ -29,16 +29,16 @@ export class CircleComponent {
   styleUrls: ['./dynamic-components-demo.component.css']
 })
 export class DynamicComponentsDemoComponent {
-  @ViewChild('container', {read: ViewContainerRef}) container;
+  @ViewChild('container', { read: ViewContainerRef }) container;
 
-  @ViewChild('todoContainer', {read: ViewContainerRef}) todoContainer;
+  @ViewChild('todoContainer', { read: ViewContainerRef }) todoContainer;
   @ViewChild('todoTemplate') todoTemplate;
 
   repeatCnt = 4;
 
   circleFactory: ComponentFactory<CircleComponent>;
 
-  constructor(private resolver: ComponentFactoryResolver){
+  constructor(private resolver: ComponentFactoryResolver) {
     this.circleFactory = this.resolver.resolveComponentFactory(CircleComponent);
   }
 
@@ -60,11 +60,11 @@ export class DynamicComponentsDemoComponent {
         text: 'Aufräumen',
         done: true
       }
-    })
+    });
   }
 
 
-    addCircle(color: string) {
+  addCircle(color: string) {
     const circleRef = this.container.createComponent(this.circleFactory, 0);
     circleRef.instance.color = color;
     return circleRef;
@@ -72,7 +72,7 @@ export class DynamicComponentsDemoComponent {
 
   moveCircle(oldIndex, newIndex) {
     const viewRef = this.container.get(oldIndex);
-    this.container.move(viewRef, newIndex)
+    this.container.move(viewRef, newIndex);
   }
 }
 
