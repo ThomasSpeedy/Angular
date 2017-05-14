@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Worktime } from '../worktime';
 import { SharedModule } from 'app/shared/shared.module';
 
@@ -27,6 +27,9 @@ export class WorktimeOverviewComponent {
     this.worktimeEndTime = selected.endTime;
   }
 
+  // Für eine bessere Performance wurde in WorktimeListItem und WorktimeList die Eigenschaft
+  // changeDetection: ChangeDetectionStrategy.OnPush verwendet. Dann überprüft Angular die Komponenten
+  // nur dann, wenn sich das Input-Binding der Komponenten tatsächlich ändert, also ein neues Objekt erhält
   updateWorktime() {
     if (this.selectedWorktime) {
       this.worktimes = this.worktimes.map((entry) => {
