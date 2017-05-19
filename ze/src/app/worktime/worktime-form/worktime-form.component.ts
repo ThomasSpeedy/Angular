@@ -3,11 +3,11 @@ import { Worktime } from '../worktime';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'ze-worktime-overview',
-  templateUrl: './worktime-overview.component.html',
-  styleUrls: ['./worktime-overview.component.css']
+  selector: 'ze-worktime-form',
+  templateUrl: './worktime-form.component.html',
+  styleUrls: ['./worktime-form.component.css']
 })
-export class WorktimeOverviewComponent implements OnInit {
+export class WorktimeFormComponent implements OnInit {
 
   worktimes = [
     new Worktime(new Date(), '07:30', '12:00'),

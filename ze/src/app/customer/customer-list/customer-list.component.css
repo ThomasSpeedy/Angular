@@ -1,0 +1,26 @@
+/*table {
+    border-spacing: 0px;
+}
+
+th {
+    text-align: left;
+    background-color: #CCC;
+}
+
+td,th {
+    min-width: 120px;
+    padding: 6px;
+}
+
+.row-even {
+    background-color: #f1f1f1;
+}
+
+.row-odd {
+    background-color: #CCC;
+}
+*/
+.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}

@@ -4,8 +4,8 @@ import { Worktime } from '../worktime';
 @Component({
   selector: 'ze-worktime-list-item',
   templateUrl: './worktime-list-item.component.html',
-  styleUrls: ['./worktime-list-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./worktime-list-item.component.css']/*,
+  changeDetection: ChangeDetectionStrategy.OnPush*/
 })
 export class WorktimeListItemComponent implements OnChanges  {
   @Input() worktime: Worktime;

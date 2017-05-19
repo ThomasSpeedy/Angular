@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DatepickerDirective } from './datepicker.directive';
+
+import { CustomersDataService } from './customers-data.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [DatepickerDirective],
-  exports: [DatepickerDirective]
+  declarations: [
+  ],
+  exports: [
+  ],
+  providers: [CustomersDataService]
 })
 export class SharedModule { }

@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead>
+    <th>Kunden-Nr.</th>
+    <th>Name</th>
+    <th>Straße</th>
+    <th>PLZ</th>
+    <th>Ort</th>
+    <th>Ansprechpartner</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers; let i=index; let isEven=even; let isOdd=odd" [ngClass]="{'row-even': isEven, 'row-odd': isOdd, 'active': customer==selectedCustomer}" (click)='handleClick(customer)'>
+      <td>{{customer.kundenNr}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.strasse}}</td>
+      <td>{{customer.plz}}</td>
+      <td>{{customer.ort}}</td>
+      <td>{{customer.ansprechPartner}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="well well-lg">
+    Ausgewählter Kunde : <strong>{{selectedCustomer?.name}}</strong>
+</div>
