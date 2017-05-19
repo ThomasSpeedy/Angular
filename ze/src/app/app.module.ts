@@ -24,7 +24,7 @@ import { routingComponents, appRouting } from './app.routing';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule, 
+    FormsModule, ReactiveFormsModule,
     HttpModule,
     InputTextModule, ButtonModule, CalendarModule, InputMaskModule, GrowlModule, PanelModule, DropdownModule,
     appRouting,

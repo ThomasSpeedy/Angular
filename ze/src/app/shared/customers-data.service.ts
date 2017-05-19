@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { Customer } from './customer';
 import testcustomers from './testcustomers';
@@ -8,7 +9,7 @@ export class CustomersDataService {
 
   customers: Customer[];
 
-  constructor() {
+  constructor(http: Http) {
     this.customers = testcustomers;
   }
 
