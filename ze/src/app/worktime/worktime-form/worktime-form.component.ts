@@ -2,6 +2,13 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Worktime } from '../worktime';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+/**
+ * 
+ * 
+ * @export
+ * @class WorktimeFormComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'ze-worktime-form',
   templateUrl: './worktime-form.component.html',

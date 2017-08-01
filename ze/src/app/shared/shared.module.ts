@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { DropdownHelperDirective } from './dropdown-helper/dropdown-helper.directive';
 import { CustomersDataService } from './customers-data.service';
 
 @NgModule({
@@ -8,8 +9,10 @@ import { CustomersDataService } from './customers-data.service';
     CommonModule
   ],
   declarations: [
+    DropdownHelperDirective
   ],
   exports: [
+    DropdownHelperDirective
   ],
   providers: [CustomersDataService]
 })

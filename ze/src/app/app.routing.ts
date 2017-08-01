@@ -1,12 +1,14 @@
 import {Routes, RouterModule, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
 
-import { CustomerOverviewComponent } from './customer/customer-overview/customer-overview.component';
-import { CustomerFormComponent } from './customer/customer-form/customer-form.component';
+import { CustomerModule } from './customer/customer.module';
+//import { WorktimeOverviewComponent } from './worktime/worktime-overview/worktime-overview.component';
+import { WorktimeModule } from './worktime/worktime.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const appRoutes: Routes = [
   {path: 'customer-form', component: CustomerFormComponent},
   {path: 'customers', component: CustomerOverviewComponent},
+  {path: 'worktime-overview', component: WorktimeOverviewComponent},
 
   /** Redirect Konfigurationen **/
   {path: '**', component: NotFoundComponent}, // immer als letztes konfigurieren - erste Route die matched wird angesteuert
@@ -14,4 +16,4 @@ export const appRoutes: Routes = [
 
 export const appRouting = RouterModule.forRoot(appRoutes);
 
-export const routingComponents = [ CustomerOverviewComponent, CustomerFormComponent, NotFoundComponent];
+export const routingComponents = [ WorktimeOverviewComponent, CustomerOverviewComponent, CustomerFormComponent, NotFoundComponent];
