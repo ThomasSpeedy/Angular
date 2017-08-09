@@ -10,16 +10,21 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { WorktimeModule } from './worktime/worktime.module';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { CustomerModule } from './customer/customer.module';
 import { routingComponents, appRouting } from './app.routing';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     NavComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +32,16 @@ import { routingComponents, appRouting } from './app.routing';
     FormsModule, ReactiveFormsModule,
     HttpModule,
     appRouting,
-    WorktimeModule,
+    //WorktimeModule,
     CustomerModule,
     SharedModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'de-de' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'de-de' },
+    AuthService,
+    AuthGuardLogin,
+    AuthGuardAdmin,
+    UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

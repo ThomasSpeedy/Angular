@@ -20,17 +20,17 @@ export class CustomerFormComponent implements OnInit {
 
   msgs: any[] = [];
 
-  userform: FormGroup;
+  formGroup: FormGroup;
 
   submitted: boolean;
 
 
   description: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.userform = this.fb.group({
+    this.formGroup = this.formBuilder.group({
       'kundenNr': ['', Validators.required],
       'name': ['', Validators.required],
       'strasse': [''],
@@ -46,7 +46,7 @@ export class CustomerFormComponent implements OnInit {
     this.msgs.push({ severity: 'info', summary: 'Success', detail: 'Form Submitted' });
   }
 
-  get diagnostic() { return JSON.stringify(this.userform.value); }
+  get diagnostic() { return JSON.stringify(this.formGroup.value); }
 
   customerSelected(selected) {
     this.selectedCustomer = selected;

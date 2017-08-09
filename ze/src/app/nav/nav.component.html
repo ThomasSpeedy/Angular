@@ -13,65 +13,19 @@
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link"  routerLink='/worktime-overview'>Zeiten</a>
+          <a href="#" class="nav-link" routerLink='/worktime-overview'>Timesheet</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Auswertungen</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a href="#" class="nav-link" routerLink='/reports'>Reports</a>
         </li>
-
-        <li class="dropdown" zeDropdownHelper>
-          <a class="dropdown-toggle disabled" data-toggle="dropdown" norouterLink='' skipLocationChange="true">Verwaltung <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li routerLinkActive="active">
-              <a routerLink='/customers'>Kunden</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/customer-form'>Neuer Kunde</a>
-            </li>
-            <li><a href="/submenu1-2">Submenu 1-2</a></li>
-            <li><a href="#">Submenu 1-3</a></li>
-          </ul>
+        <li class="nav-item" routerLinkActive="active">
+          <a href="#" class="nav-link" routerLink='/admin'>Admin</a>
         </li>
-
-        <li routerLinkActive="active">
-          <a routerLink='/about' class="link">Über uns</a>
-        </li>
-
-
-
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a *ngIf="loginService.isLoggedIn()" (click)="logout()" class="link">Abmelden</a></li>
-        <li><a *ngIf="!loginService.isLoggedIn()" [routerLink]="['/login']" class="link">Anmelden</a>
-        </li>
+        <li><a *ngIf="!authService.isLoggedIn" href="#" routerLink='/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a *ngIf="authService.isLoggedIn" (click)="logout()" class="link"> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
-
-
     </div>
   </div>
 </nav>
-
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Home</a></li>
-  <li class="dropdown" zeDropdownHelper>
-    <a class="dropdown-toggle disabled" data-toggle="dropdown" href="#">Menu 1
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="/sub2">Submenu 1-1</a></li>
-      <li><a href="#">Submenu 1-2</a></li>
-      <li><a href="#">Submenu 1-3</a></li>
-    </ul>
-  </li>
-  <li class="dropdown" zeDropdownHelper>
-    <a class="dropdown-toggle disabled" data-toggle="dropdown" href="#">Menu 2
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="/sub2">Submenu 1-1</a></li>
-      <li><a href="#">Submenu 1-2</a></li>
-      <li><a href="#">Submenu 1-3</a></li>
-    </ul>
-  </li>
-  <li><a href="#">Menu 3</a></li>
-</ul>

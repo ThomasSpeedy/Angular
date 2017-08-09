@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AlertComponent } from './alert/alert.component';
 import { DropdownHelperDirective } from './dropdown-helper/dropdown-helper.directive';
 import { CustomersDataService } from './customers-data.service';
 
@@ -9,11 +10,15 @@ import { CustomersDataService } from './customers-data.service';
     CommonModule
   ],
   declarations: [
-    DropdownHelperDirective
+    DropdownHelperDirective,
+    AlertComponent
   ],
   exports: [
-    DropdownHelperDirective
+    DropdownHelperDirective,
+    AlertComponent
   ],
-  providers: [CustomersDataService]
+  providers: [
+    CustomersDataService, 
+    AlertComponent]
 })
 export class SharedModule { }

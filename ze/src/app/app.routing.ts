@@ -1,14 +1,17 @@
 import {Routes, RouterModule, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
 
-import { CustomerModule } from './customer/customer.module';
-//import { WorktimeOverviewComponent } from './worktime/worktime-overview/worktime-overview.component';
-import { WorktimeModule } from './worktime/worktime.module';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const appRoutes: Routes = [
-  {path: 'customer-form', component: CustomerFormComponent},
-  {path: 'customers', component: CustomerOverviewComponent},
-  {path: 'worktime-overview', component: WorktimeOverviewComponent},
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+    canLoad: [AuthGuardAdmin]
+  },
+  {path: 'login', component: LoginComponent},
 
   /** Redirect Konfigurationen **/
   {path: '**', component: NotFoundComponent}, // immer als letztes konfigurieren - erste Route die matched wird angesteuert
@@ -16,4 +19,4 @@ export const appRoutes: Routes = [
 
 export const appRouting = RouterModule.forRoot(appRoutes);
 
-export const routingComponents = [ WorktimeOverviewComponent, CustomerOverviewComponent, CustomerFormComponent, NotFoundComponent];
+export const routingComponents = [ NotFoundComponent];

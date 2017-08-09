@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../services/auth.service';
+
+
 @Component({
   selector: 'ze-nav',
   templateUrl: './nav.component.html',
@@ -9,7 +12,7 @@ export class NavComponent implements OnInit {
 
   isIn = false;   // store state
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
