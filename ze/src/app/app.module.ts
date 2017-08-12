@@ -14,9 +14,11 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AlertService } from './services/alert.service';
 import { CustomerModule } from './customer/customer.module';
 import { routingComponents, appRouting } from './app.routing';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     routingComponents,
     NavComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { LoginComponent } from './login/login.component';
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
-    UserService],
+    UserService,
+    AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

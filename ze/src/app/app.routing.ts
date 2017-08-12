@@ -1,5 +1,6 @@
 import {Routes, RouterModule, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
 
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
@@ -11,6 +12,7 @@ export const appRoutes: Routes = [
     loadChildren: 'app/admin/admin.module#AdminModule',
     canLoad: [AuthGuardAdmin]
   },
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
 
   /** Redirect Konfigurationen **/

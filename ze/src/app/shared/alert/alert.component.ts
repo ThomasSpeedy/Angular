@@ -1,26 +1,51 @@
-import { Component, Input } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+
+import { Alert, AlertType } from '../alert';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
-  selector: 'ze-alert',
-  templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css']
+    moduleId: module.id,
+    selector: 'ze-alert',
+    templateUrl: 'alert.component.html'
 })
-export class AlertComponent {
-  @Input() message = { body: '', type: '', header: '' };
 
-  /**
-   * setMessage shows a message of given type for the given milliseconds
-   *
-   * @param {string} body
-   * @param {string} [type='info'] can be either 'success', 'info', 'warning' or 'danger',
-   * @param {string} [header=''] Header of the message. If empty, 'Message:' will be used as header
-   * @param {number} [time=5000]
-   * @memberof AlertComponent
-   */
-  setMessage(body: string, type: string = 'info', header: string = '', time = 5000) {
-    this.message.header = (header === '' ? 'Message:' : header);
-    this.message.body = body;
-    this.message.type = type;
-    setTimeout(() => { this.message.body = ''; }, time);
-  }
+export class AlertComponent implements OnInit {
+    alerts: Alert[] = [];
+
+    constructor(private alertService: AlertService) { }
+
+    ngOnInit() {
+        this.alertService.getAlert().subscribe((alert: Alert) => {
+            if (!alert) {
+                // clear alerts when an empty alert is received
+                this.alerts = [];
+                return;
+            }
+
+            // add alert to array
+            this.alerts.push(alert);
+        });
+    }
+
+    removeAlert(alert: Alert) {
+        this.alerts = this.alerts.filter(x => x !== alert);
+    }
+
+    cssClass(alert: Alert) {
+        if (!alert) {
+            return;
+        }
+
+        // return css class based on alert type
+        switch (alert.type) {
+            case AlertType.Success:
+                return 'alert alert-success';
+            case AlertType.Error:
+                return 'alert alert-danger';
+            case AlertType.Info:
+                return 'alert alert-info';
+            case AlertType.Warning:
+                return 'alert alert-warning';
+        }
+    }
 }

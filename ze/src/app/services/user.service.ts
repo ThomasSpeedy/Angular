@@ -16,8 +16,8 @@ export class UserService {
     return this.http.post('/api/user', JSON.stringify(user), this.options);
   }
 
-  login(credentials): Observable<any> {
-    return this.http.post('/api/login', JSON.stringify(credentials), this.options);
+  login(username: string, password: string): Observable<any> {
+    return this.http.post('/api/login', { username: username, password: password }, this.options);
   }
 
   getUsers(): Observable<any> {

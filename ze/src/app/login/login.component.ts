@@ -6,7 +6,7 @@ import {
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
-import { AlertComponent } from '../shared/alert/alert.component';
+import { AlertService } from '../services/alert.service';
 
 
 @Component({
@@ -18,10 +18,11 @@ export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  message: string;
   loginForm: FormGroup;
+  message: string;
+  loading = false;
 
-  constructor(public authService: AuthService, public router: Router, private formBuilder: FormBuilder, public alert: AlertComponent) {
+  constructor(public authService: AuthService, public router: Router, private formBuilder: FormBuilder, public alertService: AlertService) {
     this.setMessage();
   }
 
@@ -41,21 +42,20 @@ export class LoginComponent implements OnInit {
   }
 
   setMessage(newMessage: string = '') {
-    if (newMessage === '') {
-      this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in as ' + this.authService.currentUser.username : 'out');
-    } else {
+    if (newMessage !== '') {
       this.message = newMessage;
-      this.alert.setMessage(newMessage, 'danger', 'Warning!');
+    } else {
+      this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in as ' + this.authService.currentUser.username : 'out');
     }
   }
 
   login() {
+    this.loading = true;
+    this.alertService.clear();
     this.setMessage('Trying to log in ...');
 
-    this.authService.login(this.loginForm.value).subscribe(
-      (error) => { this.setMessage('Log in failed'); },
-      () => {
-        this.setMessage();
+    this.authService.login(this.email.value, this.password.value).subscribe(
+      data => {
         if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
@@ -71,9 +71,19 @@ export class LoginComponent implements OnInit {
           // Redirect the user
           this.router.navigate([redirect], navigationExtras);
         } else {
-          this.setMessage('Log in failed');
+          this.alertService.error('Log in failed: ' + 'Unvalid user/password');
         }
-      });
+      },
+      error => {
+        if (error.status === 404) {
+          this.alertService.error('Service temporary not available, please try again later');
+        } else {
+          this.alertService.error('Log in failed: ' + error );
+        }
+      }
+    );
+    this.loading = false;
+    this.setMessage();
   }
 
   logout() {

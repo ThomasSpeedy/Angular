@@ -25,11 +25,12 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword) {
-    return this.userService.login(emailAndPassword).map(res => res.json()).map(
-      res => {
-        localStorage.setItem('token', res.token);
-        const decodedUser = this.decodeUserFromToken(res.token);
+  login(email: string, password: string) {
+    return this.userService.login(email, password).map(response => response.json()).map(
+      userAsJson => {
+console.debug('in login');        
+        localStorage.setItem('token', userAsJson.token);
+        const decodedUser = this.decodeUserFromToken(userAsJson.token);
         this.setCurrentUser(decodedUser);
         return this.isLoggedIn;
       }
@@ -38,14 +39,6 @@ export class AuthService {
     /*    let dummy = { _id: '4711', username: 'dummy user', role: 'admin' };
         this.setCurrentUser(dummy);
         return this.isLoggedIn;*/
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    this.isLoggedIn = false;
-    this.isAdmin = false;
-    this.currentUser = { _id: '', username: '', role: '' };
-    this.router.navigate(['/']);
   }
 
   decodeUserFromToken(token) {
@@ -61,4 +54,11 @@ export class AuthService {
     delete decodedUser.role;
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.isLoggedIn = false;
+    this.isAdmin = false;
+    this.currentUser = { _id: '', username: '', role: '' };
+    this.router.navigate(['/']);
+  }
 }

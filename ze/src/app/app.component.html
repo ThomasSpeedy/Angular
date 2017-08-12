@@ -1,9 +1,26 @@
-<div class="container">
-  <ze-nav></ze-nav>
-</div>
-<div class="container">
+<ze-nav>
+</ze-nav>
+
+<div id="content" class="container-fluid bg-grey">
   <router-outlet></router-outlet>
 </div>
+
+<ze-alert></ze-alert>
+
+<footer class="container-fluid text-center">
+  <p>Copyright by <a href="http://hmi-informatik.de" target="_top">hmi-informatik.de</a></p>
+</footer>
+
+<!-- main app container -->
+<!--<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-10 col-sm-offset-2">
+      <router-outlet></router-outlet>
+      <ze-alert></ze-alert>
+    </div>
+  </div>
+</div>
+-->
 
 <!--<div class="content">
     <div id="left">
