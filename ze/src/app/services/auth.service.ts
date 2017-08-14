@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 //import { JwtHelper } from 'angular2-jwt';
 
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { UserService } from '../services/user.service';
 
 @Injectable()
@@ -26,19 +28,25 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
+    /*
     return this.userService.login(email, password).map(response => response.json()).map(
       userAsJson => {
-console.debug('in login');        
         localStorage.setItem('token', userAsJson.token);
         const decodedUser = this.decodeUserFromToken(userAsJson.token);
         this.setCurrentUser(decodedUser);
         return this.isLoggedIn;
       }
     );
+    */
 
-    /*    let dummy = { _id: '4711', username: 'dummy user', role: 'admin' };
-        this.setCurrentUser(dummy);
-        return this.isLoggedIn;*/
+    // Simulate login only for simple tests. Use original code before 
+    const dummy = Observable.create((observer: Observer<any>) => {
+      const dummyUser = { _id: '4711', username: 'thomas.lepack@hmi-informatik.de', role: 'admin' };
+      this.setCurrentUser(dummyUser);
+      observer.next(dummyUser);
+      observer.complete();
+    });
+    return dummy;
   }
 
   decodeUserFromToken(token) {
@@ -59,6 +67,6 @@ console.debug('in login');
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.currentUser = { _id: '', username: '', role: '' };
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

@@ -22,4 +22,7 @@ export class NavComponent implements OnInit {
     this.isIn = bool === false ? true : false;
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }

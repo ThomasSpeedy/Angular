@@ -4,6 +4,7 @@ import {
   NavigationExtras
 } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../services/alert.service';
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
         if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
-          const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+          const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
 
           // Set our navigation extras object
           // that passes on our global query params and fragment
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
           this.alertService.error('Log in failed: ' + 'Unvalid user/password');
         }
       },
-      error => {
+      (error: HttpErrorResponse) => {
         if (error.status === 404) {
           this.alertService.error('Service temporary not available, please try again later');
         } else {
