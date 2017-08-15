@@ -21,13 +21,13 @@
           <input name="remember" type="checkbox" value="Remember Me">Remember Me
         </label>
         </div>
-        <button class="btn btn-default" type="submit" [disabled]="!loginForm.valid || loginForm.loading"><i class="fa fa-sign-in"></i> Login</button>
+        <button class="btn btn-default" type="submit" [disabled]="!loginForm.valid || loginForm.loading"><i class="fa fa-sign-in"></i> Sign in</button>
       </fieldset>
     </form>
   </div>
   <div class="row">
     <div class="text-center">
-      <p><strong>Info:</strong> {{message}}</p>
+      <p><a href="#" routerLink="/reset-password">Password forgotten?</a></p> 
     </div>
   </div>
 </div>

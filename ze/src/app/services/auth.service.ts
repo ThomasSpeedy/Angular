@@ -64,6 +64,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    this.redirectUrl = '';
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.currentUser = { _id: '', username: '', role: '' };
