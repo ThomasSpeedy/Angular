@@ -15,11 +15,13 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AlertService } from './services/alert.service';
+import { CustomerService } from './services/customer.service';
 import { CustomerModule } from './customer/customer.module';
 import { routingComponents, appRouting } from './app.routing';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     NotFoundComponent,
     LoginComponent,
     HomeComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AuthGuardLogin,
     AuthGuardAdmin,
     UserService,
-    AlertService],
+    AlertService,
+    CustomerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

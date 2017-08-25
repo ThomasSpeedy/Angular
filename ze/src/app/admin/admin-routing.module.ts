@@ -6,17 +6,17 @@ import { AdminComponent } from './admin.component';
 // import { ManageCrisesComponent } from './manage-crises.component';
 // import { ManageHeroesComponent } from './manage-heroes.component';
 
-// import { AuthGuard } from '../auth-guard.service';
+import { AuthGuardAdmin } from '../services/auth-guard-admin.service';
 
 const adminRoutes: Routes = [
   {
     path: '',
     component: AdminComponent,
-//    canActivate: [AuthGuard],
+    canActivate: [AuthGuardAdmin],
     children: [
       {
         path: '',
-//        canActivateChild: [AuthGuard],
+        canActivateChild: [AuthGuardAdmin],
         children: [
 //          { path: 'crises', component: ManageCrisesComponent },
 //          { path: 'heroes', component: ManageHeroesComponent },

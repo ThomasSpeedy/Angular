@@ -41,7 +41,12 @@ export class AuthService {
 
     // Simulate login only for simple tests. Use original code before 
     const dummy = Observable.create((observer: Observer<any>) => {
-      const dummyUser = { _id: '4711', username: 'thomas.lepack@hmi-informatik.de', role: 'admin' };
+      const dummyUser = { _id: '4711', username: email, role: '' };
+      if (email === 'thomas.lepack@hmi-informatik.de') {
+        dummyUser.role = 'admin';
+      } else {
+        dummyUser.role = 'user';
+      }
       this.setCurrentUser(dummyUser);
       observer.next(dummyUser);
       observer.complete();
@@ -68,6 +73,6 @@ export class AuthService {
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.currentUser = { _id: '', username: '', role: '' };
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 }

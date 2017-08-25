@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AlertComponent } from './alert/alert.component';
 import { DropdownHelperDirective } from './dropdown-helper/dropdown-helper.directive';
-import { CustomersDataService } from './customers-data.service';
 
 @NgModule({
   imports: [
@@ -18,7 +17,6 @@ import { CustomersDataService } from './customers-data.service';
     AlertComponent
   ],
   providers: [
-    CustomersDataService, 
     AlertComponent]
 })
 export class SharedModule { }

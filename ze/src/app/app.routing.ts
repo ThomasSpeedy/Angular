@@ -2,6 +2,7 @@ import {Routes, RouterModule, RouterStateSnapshot, ActivatedRouteSnapshot} from 
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -13,7 +14,13 @@ export const appRoutes: Routes = [
     loadChildren: 'app/admin/admin.module#AdminModule',
     canLoad: [AuthGuardAdmin]
   },
-  {path: 'home', component: HomeComponent},
+  {
+    path: 'admin/customers',
+    loadChildren: 'app/customer/customer.module#CustomerModule',
+    canLoad: [AuthGuardAdmin]
+  },
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuardLogin]},
+  {path: 'logout', component: LogoutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
 

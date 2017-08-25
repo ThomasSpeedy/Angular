@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+import { CustomerService } from '../../services/customer.service';
 import { Customer } from '../../shared/customer';
 
 @Component({
@@ -8,14 +9,22 @@ import { Customer } from '../../shared/customer';
   styleUrls: ['./customer-list.component.css']/*,
   changeDetection: ChangeDetectionStrategy.OnPush*/
 })
-export class CustomerListComponent {
+export class CustomerListComponent implements OnInit {
 
   @Input() customers: Customer[];
   @Output() onSelect = new EventEmitter();
 
   selectedCustomer: Customer;
 
-  constructor() {
+  constructor(@Inject(CustomerService) private customerService: CustomerService) {
+//    customerService.getAll().then(customers => this.customers = customers);
+  }
+
+  ngOnInit(): void {
+    this.getCustomers();
+  }
+  getCustomers() {
+    this.customerService.getAll().then(customers => this.customers = customers);
   }
 
   handleClick(selected) {

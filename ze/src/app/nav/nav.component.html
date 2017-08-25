@@ -20,13 +20,29 @@
         <li class="nav-item" routerLinkActive="active">
           <a href="#" class="nav-link" routerLink='/reports'>Reports</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a href="#" class="nav-link" routerLink='/admin'>Admin</a>
+        <li class="dropdown" zeDropdownHelper *ngIf="authService.isLoggedIn && authService.isAdmin" routerLinkActive="active">
+                <a href="javascript:void(0)" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li routerLinkActive="active"><a href="#" class="nav-link" routerLink='/admin/customers'>Customers</a></li>
+            <li routerLinkActive="active"><a href="#" class="nav-link" routerLink='/admin/projects'>Projects</a></li>
+            <li routerLinkActive="active"><a href="#" class="nav-link" routerLink='/admin/users'>Users</a></li>
+          </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" routerLinkActive="active">
         <li><a *ngIf="!authService.isLoggedIn" href="#" class="nav-link" routerLink='/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a *ngIf="authService.isLoggedIn" (click)="logout()" href="#" class="nav-link" routerLink='/home'> <span class="glyphicon glyphicon-log-out"></span> Logout {{authService.currentUser.username}}</a></li>
+        <li class="dropdown" zeDropdownHelper *ngIf="authService.isLoggedIn" routerLinkActive="active">
+          <a href="javascript:void(0)" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user"></span> {{authService.currentUser.username}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a href="#" class="nav-link" routerLink='/admin/settings'><span class="glyphicon glyphicon-cog"></span> Settings</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a href="#" class="nav-link" routerLink='/logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

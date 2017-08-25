@@ -1,3 +1,5 @@
+<h2>Kunden</h2>
+
 <table class="table table-hover">
   <thead>
     <th>Kunden-Nr.</th>
@@ -8,7 +10,8 @@
     <th>Ansprechpartner</th>
   </thead>
   <tbody>
-    <tr *ngFor="let customer of customers; let i=index; let isEven=even; let isOdd=odd" [ngClass]="{'row-even': isEven, 'row-odd': isOdd, 'active': customer==selectedCustomer}" (click)='handleClick(customer)'>
+    <tr *ngFor="let customer of customers; let i=index; let isEven=even; let isOdd=odd" [ngClass]="{'row-even': isEven, 'row-odd': isOdd, 'active': customer==selectedCustomer}"
+      (click)='handleClick(customer)'>
       <td>{{customer.kundenNr}}</td>
       <td>{{customer.name}}</td>
       <td>{{customer.strasse}}</td>
@@ -20,5 +23,9 @@
 </table>
 
 <div class="well well-lg">
-    Ausgewählter Kunde : <strong>{{selectedCustomer?.name}}</strong>
+  Ausgewählter Kunde : <strong>{{selectedCustomer?.name}}</strong>
+  <div class="row">
+    <button class="btn btn-default" [routerLink]="admin/customers/new">New</button>
+<!--    <button class="btn btn-default" [routerLink]="['admin/customers/edit', selectedCustomer.kundenNr]" [disabled]="!selectedCustomer.kundenNr">Edit</button>-->
+  </div>
 </div>

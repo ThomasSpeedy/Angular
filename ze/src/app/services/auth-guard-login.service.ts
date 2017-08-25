@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuardLogin implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(protected authService: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url: string = state.url;
@@ -27,7 +27,11 @@ export class AuthGuardLogin implements CanActivate, CanActivateChild, CanLoad {
 
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
+    this.navigateToLogin(url);
+    return false;
+  }
 
+  navigateToLogin(url: string) {
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
@@ -43,14 +47,5 @@ export class AuthGuardLogin implements CanActivate, CanActivateChild, CanLoad {
 
     // Navigate to the login page with extras
     this.router.navigate(['/login'], navigationExtras);
-    return false;
-  }
-
-  isAdmin(): boolean {
-    return this.authService.isAdmin;
-  }
-
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
   }
 }

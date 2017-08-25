@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { CustomerOverviewComponent } from './customer-overview/customer-overview.component';
-import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+
+import { CustomerRoutingModule } from './customer-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    CustomerRoutingModule
   ],
-  declarations: [CustomerListComponent, CustomerFormComponent, CustomerOverviewComponent],
-  exports: [CustomerOverviewComponent, CustomerFormComponent]
+  declarations: [
+    CustomerListComponent,
+    CustomerEditComponent
+  ]
 })
 export class CustomerModule { }
